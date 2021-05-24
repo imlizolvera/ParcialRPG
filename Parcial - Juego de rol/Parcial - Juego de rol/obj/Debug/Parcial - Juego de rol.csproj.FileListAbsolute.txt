@@ -1,0 +1,7 @@
+C:\Users\Liz\source\repos\Parcial - Juego de rol\Parcial - Juego de rol\obj\Debug\Parcial - Juego de rol.csprojAssemblyReference.cache
+C:\Users\Liz\source\repos\Parcial - Juego de rol\Parcial - Juego de rol\obj\Debug\Parcial - Juego de rol.csproj.CoreCompileInputs.cache
+C:\Users\Liz\source\repos\Parcial - Juego de rol\Parcial - Juego de rol\bin\Debug\Parcial - Juego de rol.exe.config
+C:\Users\Liz\source\repos\Parcial - Juego de rol\Parcial - Juego de rol\bin\Debug\Parcial - Juego de rol.exe
+C:\Users\Liz\source\repos\Parcial - Juego de rol\Parcial - Juego de rol\bin\Debug\Parcial - Juego de rol.pdb
+C:\Users\Liz\source\repos\Parcial - Juego de rol\Parcial - Juego de rol\obj\Debug\Parcial - Juego de rol.exe
+C:\Users\Liz\source\repos\Parcial - Juego de rol\Parcial - Juego de rol\obj\Debug\Parcial - Juego de rol.pdb
