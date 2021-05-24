@@ -15,7 +15,7 @@ namespace Parcial___Juego_de_rol
 
         //Variable para hacer como un trigger de que es <= 0 
         public bool isMoreThan2 = false;
-
+        // hola
         private int _contador;
 
         public int contador
