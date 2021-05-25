@@ -10,12 +10,28 @@ namespace Parcial___Juego_de_rol
     {
         //Properties
         protected int health = 100;
+        public int Health
+        {
+            get { return health; }
+            set
+            {
+                if (value <= 0)
+                {
+                    health = 0;
+                }
+                else
+                {
+                    health = value;
+                }
+            }
+        }
+
         protected int mana = 70;
         public string special;
 
         //Variable para hacer como un trigger de que es <= 0 
         public bool isMoreThan2 = false;
-        //
+        
         private int _contador;
 
         public int contador
@@ -46,16 +62,30 @@ namespace Parcial___Juego_de_rol
         }
 
         //Methods
-        public int Attack(Unidades attackedUnit)
+        public void Attack(Unidades attackedUnit)
         {
-            Tirada.Dados();
-            Console.WriteLine("Attack");
-            return 5;
+             //* Primero, pedimos el dado
+            //tirada de dados
+            int damage = Tirada.Dados(2, 20);
+            //Segundo, tomamos la unidad a atacar y le hacemos daño.
+            //llamar recievedmg
+            attackedUnit.RecieveDmg(damage);
+            //Esto llama a la funcion de reciveDamage de la unidad que decidimos atacar,
+            //* que luego tendra que calcular el daño recibido en base a la def.
+            //Also:
+            //? attackedUnit.RecieveDmg(Tirada.Dados(2,6));
+            
         }
 
         public void Defense()
         {
             Console.WriteLine("Defense");
+            //Aca lo que tengo que hacer es, cuando se presiona en defense, se agrega o reinicia
+            //en dos el contador de defensa.
+
+            //Seteo el contador en 0, ya que cada vez que se selecione esta accion, se debe reiniciar
+            //el contador a 0 y luego desde el 
+            contador = 0;
         }
 
         public int Magic(Unidades attackedUnit)
@@ -72,9 +102,27 @@ namespace Parcial___Juego_de_rol
 
         public void RecieveDmg(int dmg)
         {
-            health-= dmg;
-            Console.WriteLine("You recieve " + dmg + " of damage.");
-            Console.WriteLine("Health points: " + health);
+            //llamar tirada de dados
+            //hacer cuenta dice attack - dice defense(armor)
+            //que el jugador reciba el damage
+            int coeficienteDeDefensa = isMoreThan2 ? 0:2; //esto es como hacer un if utilizando el bool
+            //The conditional operator ?:, also known as the ternary conditional operator,
+            //evaluates a Boolean expression and returns the result of one of the two expressions,
+            //depending on whether the Boolean expression evaluates to true or false
+            //syntax: condition ? consequent : alternative
+            coeficienteDeDefensa += Tirada.Dados(2, 4);
+            dmg -= coeficienteDeDefensa;
+            if(dmg <= 0)
+            {
+                Console.WriteLine("You don't recieve damage!");
+            }
+            else
+            {
+                Health -= dmg;
+                Console.WriteLine("You recieve " + dmg + " of damage.");
+                Console.WriteLine("Health points: " + health);
+            }
+           
         }
 
         
@@ -114,7 +162,7 @@ namespace Parcial___Juego_de_rol
                 {
                     for(int n = 0; n < numWiz; n++)
                     {
-                        Wizard wizard = new Wizard();
+                        Wizard wizard = new Wizard(120);
                     }
                 }
                 System.Console.WriteLine("How many Archer do you want in your army?");

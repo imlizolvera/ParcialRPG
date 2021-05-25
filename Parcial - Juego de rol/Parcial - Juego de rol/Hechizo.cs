@@ -9,6 +9,6 @@ namespace Parcial___Juego_de_rol
     class Hechizo
     {
         int costo;
-        int 
+        
     }
 }

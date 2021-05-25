@@ -33,7 +33,7 @@ namespace Parcial___Juego_de_rol
         {
             for (int i = 0; i < quantityWiz; i++)
             {
-                army.Add(new Wizard());
+                army.Add(new Wizard(120));
 
             }
 
@@ -71,7 +71,7 @@ namespace Parcial___Juego_de_rol
         {
             foreach (var unit in army)
             {
-                if (unit.HP > 0)
+                if (unit.HP <= 0)
                 {
                     return true;
                 }
