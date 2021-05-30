@@ -16,6 +16,8 @@ namespace Parcial___Juego_de_rol
         public Unidades currentUnit { get; set; }
         public Unidades unitToAttack { get; set; }
 
+        public Unidades unitToHeal { get; set; }
+
         //public Jugador(string nombre, int cantWiz, int cantArch, int cantBarba)
         //{
         //   this.nombre = nombre;
@@ -41,7 +43,7 @@ namespace Parcial___Juego_de_rol
         public int ChooseAction()
         {
             Console.WriteLine("What do you want to do? \n");
-            Console.WriteLine("(1) Attack.  (2) Defense.  (3) Use Magic. \n");
+            Console.WriteLine("(1) Attack.  (2) Defense.  (3) Use Magic. (4) Heal a soldier. \n");
             //switch con case
             Console.WriteLine("Introduce a number: ");
             int choice = int.Parse(Console.ReadLine());
@@ -56,6 +58,7 @@ namespace Parcial___Juego_de_rol
             int unit = int.Parse(Console.ReadLine()) -1;
             currentUnit = army.GetUnit(unit);
         }
+
         
 
         public void BonusAction()

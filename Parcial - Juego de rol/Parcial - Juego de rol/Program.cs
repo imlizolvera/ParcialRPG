@@ -131,22 +131,24 @@ namespace Parcial___Juego_de_rol
             System.Console.WriteLine("Here is a list of the classes, their abilities and properties.\n");
             System.Console.WriteLine("                     - Wizard -                   \n");
             System.Console.WriteLine("Abilities: \n");
-            System.Console.WriteLine("Cast spells: you will be to cast 3 different spells from the grimoire.");
+            //System.Console.WriteLine("Cast spells: you will be to cast 3 different spells from the grimoire.");
             System.Console.WriteLine("Attack with a weapon: you will be able to attack with your weapon.");
             System.Console.WriteLine("Use Magic: you will be able to use 3 different cantrips.");
             System.Console.WriteLine("Defense: you will get a bonus X2 for your defense dice during two turns.");
-            System.Console.WriteLine("Get Mana: you will be able to get 1D6 for extra mana every two turns.\n \n");
+            System.Console.WriteLine("Heal: you will get 1D6 to heal a soldier of your army.");
+            //System.Console.WriteLine("Get Mana: you will be able to get 1D6 for extra mana every two turns.\n \n");
 
             System.Console.ReadKey();
 
 
             System.Console.WriteLine("                     - Archer -                   \n");
             System.Console.WriteLine("Abilities: \n");
-            System.Console.WriteLine("Shoot Arrows: you will be to shoot 3 arrows at the same time to 3 different enemies.");
+            //System.Console.WriteLine("Shoot Arrows: you will be to shoot 3 arrows at the same time to 3 different enemies.");
             System.Console.WriteLine("Attack with a weapon: you will be able to attack with your weapon.");
             System.Console.WriteLine("Use Magic: you will be able to use 3 different cantrips.");
             System.Console.WriteLine("Defense: you will get a bonus X2 for your defense dice during two turns.");
-            System.Console.WriteLine("Pick Up Arrows: you will be able to pick up your arrows afeter using them as a bonus action.\n \n");
+            System.Console.WriteLine("Heal: you will get 1D6 to heal a soldier of your army.");
+            //System.Console.WriteLine("Pick Up Arrows: you will be able to pick up your arrows afeter using them as a bonus action.\n \n");
 
             System.Console.ReadKey();
 
@@ -155,7 +157,8 @@ namespace Parcial___Juego_de_rol
             System.Console.WriteLine("Attack with a weapon: you will be able to attack with your weapon.");
             System.Console.WriteLine("Use Magic: you will be able to use 3 different cantrips.");
             System.Console.WriteLine("Defense: you will get a bonus X2 for your defense dice during two turns.");
-            System.Console.WriteLine("Get In Rage: as a bonus action, you will get a 1D4 extra to cause damage, you can use this every two turns.");
+            System.Console.WriteLine("Heal: you will get 1D6 to heal a soldier of your army.");
+            //System.Console.WriteLine("Get In Rage: as a bonus action, you will get a 1D4 extra to cause damage, you can use this every two turns.");
 
 
             System.Console.ReadKey();
@@ -212,11 +215,29 @@ namespace Parcial___Juego_de_rol
 
                     break;
 
+                case 4:
+                    Console.WriteLine("Which unit do you want to heal?");
+                    jugador1.army.ShowArmy();
+                    int unitToHeal = int.Parse(Console.ReadLine());
+                    jugador1.unitToHeal = jugador1.army.GetUnit(unitToHeal - 1);
+                    jugador1.currentUnit.Heal(jugador1.unitToHeal);
+
+                    break;
+
                     //bonus action acá abajo
             }
             Console.WriteLine("\n \n Press enter to continue...");
             Console.ReadKey();
             Console.Clear();
+
+            void RemoveUnit()
+            {
+                //recorrer la lista
+                //cuando recorre, si un soldado tiene 0 de vida o menos, lo remueve de la lista
+                // army.Remove(x);
+                
+
+            }
         }
 
         static public void MenuMagic()
@@ -225,9 +246,8 @@ namespace Parcial___Juego_de_rol
             Console.WriteLine("(2) Fire: 1D20 of damage ignoring defense. Cost: 50M.");
             Console.WriteLine("(3) Earth: 1D20 of damage, reduce damage to 0 forever. Cost: 60M.\n");
         }
+
+
         
-
-
-
     }
 }

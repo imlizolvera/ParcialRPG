@@ -126,6 +126,14 @@ namespace Parcial___Juego_de_rol
 
         }
 
+        public void Heal(Unidades healedUnit) //1D6 de health +
+        {
+            int healPoints = Tirada.Dados(1, 6);
+            healedUnit.health += healPoints;
+            Console.WriteLine("You have healed " + healedUnit + "!");
+
+        }
+
         public virtual void SpecialAction()
         {
 
@@ -160,7 +168,7 @@ namespace Parcial___Juego_de_rol
             }
         }
 
-
+        
 
         //Getters
         public float HP
@@ -205,6 +213,9 @@ namespace Parcial___Juego_de_rol
 
             }
         }
+
+        
     }
+
 }
     
