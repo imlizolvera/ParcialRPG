@@ -12,7 +12,7 @@ namespace Parcial___Juego_de_rol
         {
             Random rnd = new Random();
             int dado = 0;
-            for (int cantTiradas = 1; cantTiradas < cantDados; cantTiradas++)
+            for (int cantTiradas = 1; cantTiradas <= cantDados; cantTiradas++)
             {
                 dado += rnd.Next(1, carasDados + 1);
                 

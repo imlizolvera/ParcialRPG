@@ -200,23 +200,30 @@ namespace Parcial___Juego_de_rol
                     //falta trabajar en los hechizos y el método
                     //agregar para elegir un hechizo o bien meterlo en el mismo método
                     Console.WriteLine("Which unit do you want to attack? ");
+                    jugador2.army.ShowArmy();
                     unitToAttack = int.Parse(Console.ReadLine());
                     jugador2.unitToAttack = jugador2.army.GetUnit(unitToAttack -1);
-                    jugador1.currentUnit.Magic(jugador2.unitToAttack);
+                    Console.WriteLine("Which spell do you want to use?");
+                    MenuMagic();
+                    Console.WriteLine("Introduce a number: ");
+                    int magicType = int.Parse(Console.ReadLine());
+                    jugador1.currentUnit.Magic(jugador2.unitToAttack, (eTipoMagia)magicType-1);
 
 
                     break;
 
                     //bonus action acá abajo
             }
+            Console.WriteLine("\n \n Press enter to continue...");
+            Console.ReadKey();
             Console.Clear();
         }
 
-        static public void Menu()
+        static public void MenuMagic()
         {
-            Console.WriteLine("(1) Attack.  (2) Defense.  (3) Use Magic.  (4) Special Ability. \n");
-            
-
+            Console.WriteLine("(1) Water: no damage, reduce defense (-1) forever. Cost: 20M. ");
+            Console.WriteLine("(2) Fire: 1D20 of damage ignoring defense. Cost: 50M.");
+            Console.WriteLine("(3) Earth: 1D20 of damage, reduce damage to 0 forever. Cost: 60M.\n");
         }
         
 

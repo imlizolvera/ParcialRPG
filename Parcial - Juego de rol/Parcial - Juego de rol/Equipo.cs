@@ -81,11 +81,7 @@ namespace Parcial___Juego_de_rol
             return false;
         }
 
-        public void Turno()
-        {
-            Console.WriteLine("Unidad");
-            Program.Menu();
-        }
+       
 
         static public void GetList()
         {

@@ -6,9 +6,18 @@ using System.Threading.Tasks;
 
 namespace Parcial___Juego_de_rol
 {
+    enum eTipoMagia
+    {
+        agua, //no hace daño, baja la defensa
+        fuego, //haga daño ignorando la armadura
+        tierra //le hace daño y le saca la armadura
+
+    }
+
     class Unidades
     {
         //Properties
+        public int coeficienteDeDefensa = 0;
         protected int health = 100;
         public int Health
         {
@@ -88,11 +97,33 @@ namespace Parcial___Juego_de_rol
             contador = 0;
         }
 
-        public int Magic(Unidades attackedUnit)
+        public void Magic(Unidades attackedUnit, eTipoMagia magic)
         {
             Console.WriteLine("Magic");
+            switch (magic)
+            {
+                case eTipoMagia.agua: //no hace daño, baja la defensa
+                    attackedUnit.coeficienteDeDefensa--;
+                    mana -= 20;
+                    //costo: 20 m
+                    break;
+                case eTipoMagia.fuego: //haga daño ignorando la armadura
+                    int dmg = Tirada.Dados(1, 20);
+                    attackedUnit.ImpactHealth(dmg);
+                    mana -= 50;
+                    //costo: 50 m
+                    break;
+                case eTipoMagia.tierra: //le hace daño y le saca la armadura
+                    int damage = Tirada.Dados(1, 20);
+                    attackedUnit.RecieveDmg(damage);
+                    
+                    mana -= 60;
+                    //costo 30 m
+                    break;
+                default:
+                    break;
+            }
 
-            return 5;
         }
 
         public virtual void SpecialAction()
@@ -105,14 +136,19 @@ namespace Parcial___Juego_de_rol
             //llamar tirada de dados
             //hacer cuenta dice attack - dice defense(armor)
             //que el jugador reciba el damage
-            int coeficienteDeDefensa = isMoreThan2 ? 0:2; //esto es como hacer un if utilizando el bool
+            coeficienteDeDefensa = isMoreThan2 ? 0:2; //esto es como hacer un if utilizando el bool
             //The conditional operator ?:, also known as the ternary conditional operator,
             //evaluates a Boolean expression and returns the result of one of the two expressions,
             //depending on whether the Boolean expression evaluates to true or false
             //syntax: condition ? consequent : alternative
             coeficienteDeDefensa += Tirada.Dados(2, 4);
             dmg -= coeficienteDeDefensa;
-            if(dmg <= 0)
+            ImpactHealth(dmg);
+        }
+
+        public void ImpactHealth(int dmg)
+        {
+            if (dmg <= 0)
             {
                 Console.WriteLine("You don't recieve damage!");
             }
@@ -122,10 +158,7 @@ namespace Parcial___Juego_de_rol
                 Console.WriteLine("You recieve " + dmg + " of damage.");
                 Console.WriteLine("Health points: " + health);
             }
-           
         }
-
-        
 
 
 
