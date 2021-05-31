@@ -50,6 +50,20 @@ namespace Parcial___Juego_de_rol
             }
         }
 
+        public void RemoveUnit()
+        {
+            //recorrer la lista
+            for (int unit = 0; unit <= army.Count-1; unit++)
+            {
+                if (army[unit].Health <= 0)
+                {
+                    army.Remove(army[unit]);
+                }
+            }
+            //cuando recorre, si un soldado tiene 0 de vida o menos, lo remueve de la lista
+            //army.Remove(x);
+
+        }
 
         public void ShowArmy()
         {

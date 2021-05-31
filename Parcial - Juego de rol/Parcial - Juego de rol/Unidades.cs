@@ -130,7 +130,8 @@ namespace Parcial___Juego_de_rol
         {
             int healPoints = Tirada.Dados(1, 6);
             healedUnit.health += healPoints;
-            Console.WriteLine("You have healed " + healedUnit + "!");
+            Console.WriteLine("You have healed a " + healedUnit + "!");
+            Console.WriteLine(healedUnit + " obtains" + healPoints + "of health!");
 
         }
 

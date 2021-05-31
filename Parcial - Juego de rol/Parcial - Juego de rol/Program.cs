@@ -168,7 +168,8 @@ namespace Parcial___Juego_de_rol
         private static void Turno(Jugador jugador1, Jugador jugador2)
         {
             Console.WriteLine("Turno de " + jugador1.nombre + "\n");
-
+            jugador1.army.RemoveUnit();
+            jugador2.army.RemoveUnit();
             jugador1.ChooseUnit();
 
 
@@ -230,14 +231,7 @@ namespace Parcial___Juego_de_rol
             Console.ReadKey();
             Console.Clear();
 
-            void RemoveUnit()
-            {
-                //recorrer la lista
-                //cuando recorre, si un soldado tiene 0 de vida o menos, lo remueve de la lista
-                // army.Remove(x);
-                
-
-            }
+            
         }
 
         static public void MenuMagic()
