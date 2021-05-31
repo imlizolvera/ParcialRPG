@@ -18,14 +18,6 @@ namespace Parcial___Juego_de_rol
 
         public Unidades unitToHeal { get; set; }
 
-        //public Jugador(string nombre, int cantWiz, int cantArch, int cantBarba)
-        //{
-        //   this.nombre = nombre;
-        //   army = new Equipo(cantWiz, cantArch, cantBarba);
-
-        //}
-
-
         public Equipo army
         {
             get; set;
@@ -33,13 +25,23 @@ namespace Parcial___Juego_de_rol
 
 
         //Procedimientos
+
+        /// <summary>
+        /// Create Army: create the list of soldiers (units).
+        /// </summary>
+        /// <param name="cantWiz"></param>
+        /// <param name="cantArch"></param>
+        /// <param name="cantBarba"></param>
         public void CreateArmy(int cantWiz, int cantArch, int cantBarba)
         {
             army = new Equipo(cantWiz, cantArch, cantBarba);
 
-
         }
 
+        /// <summary>
+        /// Menu for players to choose the action they want to do.
+        /// </summary>
+        /// <returns></returns>
         public int ChooseAction()
         {
             Console.WriteLine("What do you want to do? \n");
@@ -51,6 +53,9 @@ namespace Parcial___Juego_de_rol
             
         }
 
+        /// <summary>
+        /// Players can choose the unit they want to use.
+        /// </summary>
         public void ChooseUnit()
         {
             army.ShowArmy();
@@ -59,11 +64,5 @@ namespace Parcial___Juego_de_rol
             currentUnit = army.GetUnit(unit);
         }
 
-        
-
-        public void BonusAction()
-        {
-
-        }
     }
 }

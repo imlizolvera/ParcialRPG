@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Parcial___Juego_de_rol
 {
-    enum eTipoMagia
+    enum eTipoMagia //enumerador, es como un array 
     {
         agua, //no hace daño, baja la defensa
         fuego, //haga daño ignorando la armadura
@@ -19,6 +19,10 @@ namespace Parcial___Juego_de_rol
         //Properties
         public int coeficienteDeDefensa = 0;
         protected int health = 100;
+
+        /// <summary>
+        /// Sets the value of health in 0 when It's less or equal than 0.
+        /// </summary>
         public int Health
         {
             get { return health; }
@@ -43,6 +47,9 @@ namespace Parcial___Juego_de_rol
         
         private int _contador;
 
+        /// <summary>
+        /// Used in Defense(); in order to count the times It doubles the armor. Sets the counter in 0 when 2 turns passes.
+        /// </summary>
         public int contador
         {
             set
@@ -71,6 +78,11 @@ namespace Parcial___Juego_de_rol
         }
 
         //Methods
+
+        /// <summary>
+        /// Units can attack their enemies. It Calls dices, RecieveDmg().
+        /// </summary>
+        /// <param name="attackedUnit"></param>
         public void Attack(Unidades attackedUnit)
         {
              //* Primero, pedimos el dado
@@ -86,6 +98,9 @@ namespace Parcial___Juego_de_rol
             
         }
 
+        /// <summary>
+        /// doubles armor x2 during 2 turns, using "contador"
+        /// </summary>
         public void Defense()
         {
             Console.WriteLine("Defense");
@@ -97,7 +112,12 @@ namespace Parcial___Juego_de_rol
             contador = 0;
         }
 
-        public void Magic(Unidades attackedUnit, eTipoMagia magic)
+        /// <summary>
+        /// Select magic spells, param attacked unit and type of magic.
+        /// </summary>
+        /// <param name="attackedUnit">unit being attacked</param>
+        /// <param name="magic">type of magic player wants to use</param>
+        public void Magic(Unidades attackedUnit, eTipoMagia magic) //eTipo es un enumerador!
         {
             Console.WriteLine("Magic");
             switch (magic)
@@ -126,6 +146,10 @@ namespace Parcial___Juego_de_rol
 
         }
 
+        /// <summary>
+        /// Heal a friend soldier from your army. Wholesome moment.
+        /// </summary>
+        /// <param name="healedUnit">unit player wants to heal</param>
         public void Heal(Unidades healedUnit) //1D6 de health +
         {
             int healPoints = Tirada.Dados(1, 6);
@@ -135,11 +159,10 @@ namespace Parcial___Juego_de_rol
 
         }
 
-        public virtual void SpecialAction()
-        {
-
-        }
-
+        /// <summary>
+        /// Units recieve damage.
+        /// </summary>
+        /// <param name="dmg">damage used in attack and use magic</param>
         public void RecieveDmg(int dmg)
         {
             //llamar tirada de dados
@@ -150,11 +173,16 @@ namespace Parcial___Juego_de_rol
             //evaluates a Boolean expression and returns the result of one of the two expressions,
             //depending on whether the Boolean expression evaluates to true or false
             //syntax: condition ? consequent : alternative
-            coeficienteDeDefensa += Tirada.Dados(2, 4);
+            coeficienteDeDefensa *= Tirada.Dados(2, 4);
+            contador++;
             dmg -= coeficienteDeDefensa;
             ImpactHealth(dmg);
         }
 
+        /// <summary>
+        /// Use damage in RecieveDmg(); to affect the health.
+        /// </summary>
+        /// <param name="dmg"></param>
         public void ImpactHealth(int dmg)
         {
             if (dmg <= 0)
@@ -189,7 +217,10 @@ namespace Parcial___Juego_de_rol
         }
 
         
-
+        /// <summary>
+        /// Assigne classes to units
+        /// </summary>
+        /// <param name="contadorUnits">quantity of units player chooses at the begining</param>
         static public void SelectClass(int contadorUnits)
         {
             for ( int i = 0; i < contadorUnits; i++)

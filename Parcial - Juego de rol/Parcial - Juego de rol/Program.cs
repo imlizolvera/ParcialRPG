@@ -88,6 +88,11 @@ namespace Parcial___Juego_de_rol
 
         }
 
+        /// <summary>
+        /// Generate Army asking for each class.
+        /// </summary>
+        /// <param name="jugador">Objeto que tiene equipo</param>
+        /// <param name="cantUnidades">cantidad de unidades máx</param>
         private static void GenerateArmy(Jugador jugador, int cantUnidades)
         {
             //Player 1's army
@@ -125,6 +130,9 @@ namespace Parcial___Juego_de_rol
             jugador.CreateArmy(numWiz, numArch, numBarba);
         }
 
+        /// <summary>
+        /// It shows classes' info
+        /// </summary>
         private static void ShowClass()
         {
             System.Console.WriteLine("Let's decide your soldiers' classes! \n");
@@ -165,6 +173,11 @@ namespace Parcial___Juego_de_rol
             System.Console.Clear();
         }
 
+        /// <summary>
+        /// system of turns, calls a player and then another during the process of choosing attacked units and attacker units.
+        /// </summary>
+        /// <param name="jugador1">player playing its turn</param>
+        /// <param name="jugador2">the enemy</param>
         private static void Turno(Jugador jugador1, Jugador jugador2)
         {
             Console.WriteLine("Turno de " + jugador1.nombre + "\n");
@@ -227,6 +240,7 @@ namespace Parcial___Juego_de_rol
 
                     //bonus action acá abajo
             }
+            
             Console.WriteLine("\n \n Press enter to continue...");
             Console.ReadKey();
             Console.Clear();
@@ -234,6 +248,9 @@ namespace Parcial___Juego_de_rol
             
         }
 
+        /// <summary>
+        /// Menu of magic spells
+        /// </summary>
         static public void MenuMagic()
         {
             Console.WriteLine("(1) Water: no damage, reduce defense (-1) forever. Cost: 20M. ");
@@ -242,6 +259,5 @@ namespace Parcial___Juego_de_rol
         }
 
 
-        
     }
 }

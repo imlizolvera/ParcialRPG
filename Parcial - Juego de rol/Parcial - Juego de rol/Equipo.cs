@@ -29,6 +29,12 @@ namespace Parcial___Juego_de_rol
 
         }
 
+        /// <summary>
+        /// Creates army, adding each kind of unit to one list.
+        /// </summary>
+        /// <param name="quantityWiz">quantity of wizards chosen</param>
+        /// <param name="quantityArch">quantity of archers chosen</param>
+        /// <param name="quantityBarba">quantity of barbarians chosen</param>
         public void CreateArmy(int quantityWiz, int quantityArch, int quantityBarba)
         {
             for (int i = 0; i < quantityWiz; i++)
@@ -50,6 +56,9 @@ namespace Parcial___Juego_de_rol
             }
         }
 
+        /// <summary>
+        /// Remove units when their health is less or equal than 0.
+        /// </summary>
         public void RemoveUnit()
         {
             //recorrer la lista
@@ -65,22 +74,34 @@ namespace Parcial___Juego_de_rol
 
         }
 
+        /// <summary>
+        /// Show army: units, class, health, mana.
+        /// </summary>
         public void ShowArmy()
         {
             int contador = 1;
             foreach (var unidades in army)
             {
-                Console.WriteLine(contador + " Unit " + unidades.ToString() + " Health: " + unidades.HP);
+                Console.WriteLine(contador + " Unit " + unidades.ToString() + ". Health: " + unidades.HP + ". Mana: " + unidades.MP + ".\n");
                 contador++;
             }
 
         }
 
+        /// <summary>
+        /// Calls units by index.
+        /// </summary>
+        /// <param name="index">unit's ID</param>
+        /// <returns></returns>
         public Unidades GetUnit(int index)
         {
             return army[index];
         }
 
+        /// <summary>
+        /// Verification of the units' health.
+        /// </summary>
+        /// <returns></returns>
         public bool AreUnitsDead()
         {
             foreach (var unit in army)
@@ -94,15 +115,6 @@ namespace Parcial___Juego_de_rol
 
             return false;
         }
-
-       
-
-        static public void GetList()
-        {
-
-
-        }
-
 
     }
 }
